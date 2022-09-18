@@ -1,8 +1,19 @@
 package spring_introduction;
 
-public class Dog implements Pet{
-    private String name;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+
+@Component
+
+public class Dog implements Pet{
+   // private String name;
+
+/*
     public String getName() {
         return name;
     }
@@ -10,6 +21,10 @@ public class Dog implements Pet{
     public void setName(String name) {
         this.name = name;
     }
+*/
+
+
+
 
     public Dog() {
         System.out.println("Dog bean is created");
@@ -18,5 +33,14 @@ public class Dog implements Pet{
     @Override
     public void say(){
         System.out.println("Bow-Wow");
+    }
+
+    @PostConstruct
+    private void init(){
+        System.out.println("Class Dog: init method");
+    }
+    @PreDestroy
+    private void destroy(){
+        System.out.println("Class Dog: destroy method");
     }
 }
